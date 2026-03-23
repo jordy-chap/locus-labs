@@ -2,38 +2,33 @@ import { useState } from 'react'
 import { ScrollReveal } from './ScrollReveal'
 import { ArrowRight } from 'lucide-react'
 
-interface CaseStudy {
+interface Project {
   id: number
   tag: string
   title: string
   descriptor: string
+  url?: string
 }
 
-const caseStudies: CaseStudy[] = [
+const projects: Project[] = [
   {
     id: 1,
-    tag: 'AI Product',
-    title: 'AI-Native SaaS Product — Seed to Launch',
+    tag: 'AI SaaS Product',
+    title: 'Almond Dad — AI Kids Meal Planner',
     descriptor:
-      'End-to-end venture build: from 0→1 strategy through to a live, AI-first product in market.',
+      'AI-powered weekly meal planner for children aged 6 months to 7 years. Generates allergy-safe, age-appropriate meals with nutrition tracking, pantry-aware suggestions, and a built-in shopping list. Built with Next.js, OpenAI, Stripe, and Neon Postgres.',
+    url: 'https://almond.dad',
   },
   {
     id: 2,
-    tag: 'Enterprise Strategy',
-    title: 'Enterprise AI Strategy — Global Financial Services',
+    tag: 'B2B SaaS Product',
+    title: 'Buyers HQ — Property Buying Companion',
     descriptor:
-      'AI capability assessment and investment roadmap for a global financial services organisation.',
-  },
-  {
-    id: 3,
-    tag: 'Agentic Workflows',
-    title: 'Agentic Workflow Implementation — Professional Services Firm',
-    descriptor:
-      'Designing and embedding AI agents into core delivery workflows across a 200-person firm.',
+      'Mobile-first dual-portal app for Australian buyer\'s agents and their clients. Tracks properties through an 11-stage pipeline from inspection to settlement, with schedule management, comparable sales data, and real-time collaboration between agents and buyers. Built with React, Vite, and Tailwind CSS.',
   },
 ]
 
-function WorkCard({ study, delay }: { study: CaseStudy; delay: number }) {
+function WorkCard({ project, delay }: { project: Project; delay: number }) {
   const [hovered, setHovered] = useState(false)
 
   return (
@@ -47,37 +42,12 @@ function WorkCard({ study, delay }: { study: CaseStudy; delay: number }) {
           borderRadius: '12px',
           padding: '40px 36px',
           position: 'relative',
+          height: '100%',
           transform: hovered ? 'translateY(-2px)' : 'translateY(0)',
           transition: 'transform 0.3s ease, border-color 0.3s ease',
-          cursor: 'default',
+          cursor: project.url ? 'pointer' : 'default',
         }}
       >
-        {/* Coming Soon chip */}
-        <div
-          style={{
-            position: 'absolute',
-            top: '20px',
-            right: '20px',
-            padding: '3px 10px',
-            borderRadius: '20px',
-            backgroundColor: 'rgba(122, 122, 154, 0.12)',
-            border: '1px solid rgba(122, 122, 154, 0.2)',
-          }}
-        >
-          <span
-            style={{
-              fontFamily: "'DM Sans', sans-serif",
-              fontSize: '10px',
-              fontWeight: 500,
-              letterSpacing: '0.1em',
-              color: '#7a7a9a',
-              textTransform: 'uppercase',
-            }}
-          >
-            Coming Soon
-          </span>
-        </div>
-
         {/* Tag */}
         <div style={{ marginBottom: '20px' }}>
           <span
@@ -90,7 +60,7 @@ function WorkCard({ study, delay }: { study: CaseStudy; delay: number }) {
               textTransform: 'uppercase',
             }}
           >
-            {study.tag}
+            {project.tag}
           </span>
         </div>
 
@@ -104,10 +74,9 @@ function WorkCard({ study, delay }: { study: CaseStudy; delay: number }) {
             letterSpacing: '-0.015em',
             color: '#f0f0f5',
             marginBottom: '14px',
-            maxWidth: '380px',
           }}
         >
-          {study.title}
+          {project.title}
         </h3>
 
         {/* Descriptor */}
@@ -118,33 +87,39 @@ function WorkCard({ study, delay }: { study: CaseStudy; delay: number }) {
             fontWeight: 400,
             lineHeight: 1.65,
             color: '#7a7a9a',
-            marginBottom: '32px',
+            marginBottom: project.url ? '32px' : '0',
           }}
         >
-          {study.descriptor}
+          {project.descriptor}
         </p>
 
-        {/* Link */}
-        <div
-          style={{
-            display: 'inline-flex',
-            alignItems: 'center',
-            gap: '6px',
-            color: hovered ? '#4fc3f7' : '#4a8fa8',
-            transition: 'color 0.2s ease',
-          }}
-        >
-          <span
+        {/* Link — only shown if project has a URL */}
+        {project.url && (
+          <a
+            href={project.url}
+            target="_blank"
+            rel="noopener noreferrer"
             style={{
-              fontFamily: "'DM Sans', sans-serif",
-              fontSize: '14px',
-              fontWeight: 500,
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '6px',
+              color: hovered ? '#4fc3f7' : '#4a8fa8',
+              transition: 'color 0.2s ease',
+              textDecoration: 'none',
             }}
           >
-            View Case Study
-          </span>
-          <ArrowRight size={14} />
-        </div>
+            <span
+              style={{
+                fontFamily: "'DM Sans', sans-serif",
+                fontSize: '14px',
+                fontWeight: 500,
+              }}
+            >
+              Visit Site
+            </span>
+            <ArrowRight size={14} />
+          </a>
+        )}
       </div>
     </ScrollReveal>
   )
@@ -196,7 +171,7 @@ export function WorkSection() {
           </h2>
         </ScrollReveal>
 
-        {/* Case study grid */}
+        {/* Project grid */}
         <div
           style={{
             display: 'grid',
@@ -204,8 +179,8 @@ export function WorkSection() {
             gap: '24px',
           }}
         >
-          {caseStudies.map((study, i) => (
-            <WorkCard key={study.id} study={study} delay={i * 80} />
+          {projects.map((project, i) => (
+            <WorkCard key={project.id} project={project} delay={i * 80} />
           ))}
         </div>
       </div>
