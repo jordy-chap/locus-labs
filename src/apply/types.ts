@@ -95,6 +95,8 @@ export interface ApplicationConfig {
   roleTitle: string
   /** Case-sensitive password required to view the page. */
   password: string
+  /** Optional hint shown on the gate (e.g. spelling out the password). */
+  passwordHint?: string
   theme: ApplicationTheme
   coverLetter: CoverLetterContent
   cv: CvContent

@@ -88,6 +88,11 @@ export function PasswordGate({ config, children }: PasswordGateProps) {
           <span style={{ fontSize: '15px', color: theme.muted }}>
             Enter the password to continue
           </span>
+          {config.passwordHint && (
+            <span style={{ fontSize: '13px', color: theme.muted, opacity: 0.8 }}>
+              {config.passwordHint}
+            </span>
+          )}
         </div>
 
         <input

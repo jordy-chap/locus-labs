@@ -17,6 +17,7 @@ export const applications: Record<string, ApplicationConfig> = {
     company: 'Vercel',
     roleTitle: 'Account Executive, Majors - Install Base (APAC)',
     password: 'Vercel',
+    passwordHint: 'The password is “Vercel”',
     theme: vercelTheme,
     coverLetter: vercelCoverLetter,
     cv: vercelCv,
