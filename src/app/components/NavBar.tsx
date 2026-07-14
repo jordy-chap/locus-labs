@@ -142,9 +142,9 @@ export function NavBar() {
             backgroundColor: 'rgba(10, 10, 15, 0.97)',
             borderTop: '1px solid rgba(255,255,255,0.06)',
             backdropFilter: 'blur(16px)',
+            padding: '24px 32px',
           }}
-          className="md:hidden py-6 flex flex-col gap-5"
-          style={{ padding: '24px 32px' }}
+          className="md:hidden flex flex-col gap-5"
         >
           {navLinks.map((link) => (
             <button

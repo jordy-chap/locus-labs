@@ -1,31 +1,13 @@
-import { NavBar } from './components/NavBar'
-import { HeroSection } from './components/HeroSection'
-import { ProblemSection } from './components/ProblemSection'
-import { ServicesSection } from './components/ServicesSection'
-import { WorkSection } from './components/WorkSection'
-import { PhilosophySection } from './components/PhilosophySection'
-import { CTASection } from './components/CTASection'
-import { Footer } from './components/Footer'
+import { Routes, Route, Navigate } from 'react-router-dom'
+import { LandingPage } from './pages/LandingPage'
+import { ApplicationPage } from './pages/ApplicationPage'
 
 export default function App() {
   return (
-    <div
-      style={{
-        backgroundColor: '#0a0a0f',
-        minHeight: '100vh',
-        fontFamily: "'DM Sans', sans-serif",
-      }}
-    >
-      <NavBar />
-      <main>
-        <HeroSection />
-        <ProblemSection />
-        <ServicesSection />
-        <WorkSection />
-        <PhilosophySection />
-        <CTASection />
-      </main>
-      <Footer />
-    </div>
+    <Routes>
+      <Route path="/" element={<LandingPage />} />
+      <Route path="/apply/:company" element={<ApplicationPage />} />
+      <Route path="*" element={<Navigate to="/" replace />} />
+    </Routes>
   )
 }

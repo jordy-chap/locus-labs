@@ -1,0 +1,58 @@
+/*
+ * Print styles for the hidden application pages (/apply/*).
+ *
+ * On screen the pages use the company's dark theme; when printed (or "Download
+ * PDF" → Save as PDF) we force a clean, professional white-on-black document,
+ * hide the toolbar/nav, and avoid awkward page breaks. Only the currently
+ * selected document is on the page, so only it prints.
+ */
+@media print {
+  @page {
+    size: A4;
+    margin: 16mm 14mm;
+  }
+
+  /* Hide the site's landing nav if it were ever on screen, and the toolbar. */
+  .apply-toolbar,
+  header.fixed {
+    display: none !important;
+  }
+
+  /* Force light, ink-friendly output regardless of the on-screen theme. */
+  html,
+  body,
+  .apply-root,
+  .apply-main {
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+
+  .apply-main {
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* Recolour themed inline styles to black/grey for print. */
+  .apply-doc,
+  .apply-doc * {
+    color: #000000 !important;
+    background: transparent !important;
+    border-color: #cccccc !important;
+  }
+  .apply-doc h2,
+  .apply-doc [style*='color'] span[aria-hidden] {
+    color: #555555 !important;
+  }
+
+  /* Keep experience entries and headings from splitting across pages. */
+  .apply-entry,
+  .apply-doc li {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+  .apply-doc h2 {
+    break-after: avoid;
+    page-break-after: avoid;
+  }
+}
