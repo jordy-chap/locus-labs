@@ -6,7 +6,7 @@ export function ProblemSection() {
       id="about"
       style={{
         backgroundColor: '#0a0a0f',
-        padding: '140px 24px',
+        padding: '48px 24px 140px',
         position: 'relative',
       }}
     >

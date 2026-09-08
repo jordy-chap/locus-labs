@@ -55,10 +55,10 @@ export function HeroSection() {
     <section
       style={{
         position: 'relative',
-        minHeight: '100vh',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
+        padding: '144px 0 48px',
         backgroundColor: '#0a0a0f',
         overflow: 'hidden',
       }}
@@ -100,7 +100,6 @@ export function HeroSection() {
           width: '100%',
           padding: '0 24px',
           textAlign: 'center',
-          paddingTop: '80px',
         }}
       >
         {/* Eyebrow label */}
@@ -239,7 +238,7 @@ export function HeroSection() {
         {/* Scroll hint */}
         <div
           style={{
-            marginTop: '80px',
+            marginTop: '48px',
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
