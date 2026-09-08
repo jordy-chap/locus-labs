@@ -167,8 +167,8 @@ export function HeroSection() {
           }}
         >
           Locus Labs helps organisations develop clear AI strategy, build
-          AI-native products, and adapt their ways of working — so they stay in
-          control of their own future.
+          AI-native products, and adapt their ways of working. So they retain
+          control of their future.
         </p>
 
         {/* CTAs */}
