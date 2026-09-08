@@ -109,9 +109,9 @@ export function PhilosophySection() {
                   marginBottom: '24px',
                 }}
               >
-                The term "locus of control" comes from psychology — it describes the degree to
-                which people believe they have control over outcomes in their lives. Organisations
-                with a strong internal locus of control don't just react to change. They shape it.
+                The term "locus of control" describes the degree to which people believe they
+                have control over outcomes in their lives. Organisations with a strong internal
+                locus of control don't just react to change. They shape it.
               </p>
             </ScrollReveal>
 
@@ -126,10 +126,10 @@ export function PhilosophySection() {
                   marginBottom: '24px',
                 }}
               >
-                We founded Locus Labs on a simple belief:{' '}
                 <span style={{ color: '#c8e8f5', fontWeight: 500 }}>
-                  every organisation, regardless of size or sector, can develop the clarity and
-                  capability to lead in the AI era — not be led by it.
+                  Every organisation, regardless of size or sector, can develop the clarity and
+                  capability to make proactive change with AI, rather than change happening to
+                  them.
                 </span>
               </p>
             </ScrollReveal>
