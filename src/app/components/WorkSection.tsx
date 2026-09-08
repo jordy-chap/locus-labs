@@ -16,7 +16,7 @@ const projects: Project[] = [
     tag: 'AI SaaS Product',
     title: 'Almond Dad — AI Kids Meal Planner',
     descriptor:
-      'AI-powered weekly meal planner for children aged 6 months to 7 years. Generates allergy-safe, age-appropriate meals with nutrition tracking, pantry-aware suggestions, and a built-in shopping list. Built with Next.js, OpenAI, Stripe, and Neon Postgres.',
+      'AI-powered weekly meal planner for children aged 6 months to 7 years. Generates allergy-safe, age-appropriate meals with nutrition tracking, pantry-aware suggestions, and a built-in shopping list.',
     url: 'https://almond.dad',
   },
   {
@@ -24,7 +24,7 @@ const projects: Project[] = [
     tag: 'B2B SaaS Product',
     title: 'Buyers HQ — Property Buying Companion',
     descriptor:
-      'Mobile-first dual-portal app for Australian buyer\'s agents and their clients. Tracks properties through an 11-stage pipeline from inspection to settlement, with schedule management, comparable sales data, and real-time collaboration between agents and buyers. Built with React, Vite, and Tailwind CSS.',
+      'Mobile-first dual-portal app for Australian buyer\'s agents and their clients. Tracks properties through an 11-stage pipeline from inspection to settlement, with schedule management, comparable sales data, and real-time collaboration between agents and buyers.',
   },
 ]
 
