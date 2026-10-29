@@ -1,7 +1,7 @@
 # Date Finder
 
-A throwaway page where friends tap the days they're free in December 2026 and
-January 2027, and see a heatmap plus the best dates for the group. No sign-in.
+A throwaway page where friends tap the days they're free between 7 and 24
+December 2026, and see a heatmap plus the best dates for the group. No sign-in.
 
 - `index.html`: the whole page (static).
 - `api/avail.js`: `GET /api/avail` returns `{people: {<slug>: {name, days}}}`.

@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Date Finder</title>
-<meta name="description" content="Tap the days you're free in December and January to find the best dates for the group.">
+<meta name="description" content="Tap the days you're free between 7 and 24 December to find the best dates for the group.">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=DM+Sans:wght@400;500;700&display=swap">
 <style>
 /* Layout: narrow single column; name box, two month grids to tap, then ranked best dates. */
@@ -62,7 +62,7 @@ li span.names{color:var(--muted);font-size:.85rem;min-width:0;overflow-wrap:anyw
 <main>
   <header>
     <h1>Date Finder</h1>
-    <p>Tap every day you could do in December and January. Your pick saves as you go, and the best dates for the group show at the bottom.</p>
+    <p>Tap every day you could do between 7 and 24 December. Your pick saves as you go, and the best dates for the group show at the bottom.</p>
   </header>
 
   <section>
@@ -89,7 +89,8 @@ li span.names{color:var(--muted);font-size:.85rem;min-width:0;overflow-wrap:anyw
 </main>
 
 <script>
-const MONTHS=[{y:2026,m:11},{y:2027,m:0}];
+// Only these days can be picked: 7 to 24 December 2026.
+const RANGE={y:2026,m:11,from:7,to:24};
 const MN=['January','February','March','April','May','June','July','August','September','October','November','December'];
 const API='/api/avail',POLL_MS=15000;
 const key=(y,m,d)=>`${y}-${String(m+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
@@ -104,19 +105,20 @@ function loadMine(){
   mine=new Set(s&&all[s]?all[s].days:[]);
 }
 function render(){
-  const ppl=Object.values(all).filter(p=>p.days&&p.days.length);
+  const inRange=k=>k>=key(RANGE.y,RANGE.m,RANGE.from)&&k<=key(RANGE.y,RANGE.m,RANGE.to);
+  const ppl=Object.values(all).map(p=>({...p,days:(p.days||[]).filter(inRange)})).filter(p=>p.days.length);
   const counts={},who={};
   ppl.forEach(p=>p.days.forEach(d=>{counts[d]=(counts[d]||0)+1;(who[d]=who[d]||[]).push(p.name)}));
   const max=Math.max(1,ppl.length);
   const box=document.getElementById('months');box.innerHTML='';
-  MONTHS.forEach(({y,m})=>{
+  [RANGE].forEach(({y,m,from,to})=>{
     const wrap=document.createElement('div');wrap.className='month';
     wrap.innerHTML=`<h2>${MN[m]} ${y}</h2>`;
     const g=document.createElement('div');g.className='grid';
     ['M','T','W','T','F','S','S'].forEach(d=>{const e=document.createElement('div');e.className='dow';e.textContent=d;g.append(e)});
-    const first=(new Date(y,m,1).getDay()+6)%7,n=new Date(y,m+1,0).getDate();
+    const first=(new Date(y,m,from).getDay()+6)%7;
     for(let i=0;i<first;i++){const b=document.createElement('button');b.className='day';b.disabled=true;g.append(b)}
-    for(let d=1;d<=n;d++){
+    for(let d=from;d<=to;d++){
       const k=key(y,m,d),c=counts[k]||0,b=document.createElement('button');
       b.type='button';b.className='day'+(mine.has(k)?' mine':'');
       b.dataset.h=c?Math.max(1,Math.ceil(c/max*4)):0;
