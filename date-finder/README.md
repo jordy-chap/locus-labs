@@ -13,6 +13,13 @@ December 2026, and see a heatmap plus the best dates for the group. No sign-in.
 This is its own Vercel project (`date-finder`). It is separate from the Locus Labs
 site at the repo root and from `almond-dad-kids-meal-planner-app`.
 
+## Live
+
+- URL: https://date-finder-jordan-chapmans-projects.vercel.app (Vercel Auth off)
+- Project `prj_S0Cj4tRnuEwcYxvykc6zRLPL66gL`, team Locus Labs
+- Blob store `date-finder-blob` (`store_LaWKO3iRwXQhx0RQ`, private, syd1)
+- Deployed from files, not Git-linked, so pushes to this repo don't redeploy it.
+
 ## Setting it up by hand in the Vercel dashboard
 
 1. **Add New → Project**, import `jordy-chap/locus-labs`, team **Locus Labs**.
